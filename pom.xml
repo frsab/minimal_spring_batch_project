@@ -15,14 +15,25 @@
 	</properties>
 
 	<dependencies>
+<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-mongodb -->
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-data-mongodb</artifactId>
+    <version>1.3.0.RELEASE</version>
+</dependency>
+
+	
 		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-batch -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-batch</artifactId>
 			<version>1.0.0.RELEASE</version>
 		</dependency>
-		<!-- <dependency> <groupId>org.springframework.batch</groupId> <artifactId>spring-batch-core</artifactId> 
-			<version>3.0.7.RELEASE</version> </dependency> -->
+		<!-- <dependency> 
+		<groupId>org.springframework.batch</groupId> 
+		<artifactId>spring-batch-core</artifactId> 
+			<version>3.0.7.RELEASE</version> 
+			</dependency> -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
