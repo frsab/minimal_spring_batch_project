@@ -1,5 +1,7 @@
 package com.spring.patch.minimal_spring_patch_project;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.StepContribution;
@@ -20,6 +22,8 @@ import org.springframework.batch.repeat.RepeatStatus;
 @EnableBatchProcessing
 @EnableAutoConfiguration
 public class BatchConfiguration {
+	
+	private static Logger logger = LoggerFactory.getLogger(BatchConfiguration.class);
 
   @Autowired
   private JobBuilderFactory jobBuilderFactory;
