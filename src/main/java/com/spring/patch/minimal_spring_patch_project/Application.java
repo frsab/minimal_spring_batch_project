@@ -10,14 +10,15 @@ public class Application {
 	private static Logger logger = LoggerFactory.getLogger(Application.class);
 
 	public static void main(String[] args) {
+		
 
 		StopWatch stopWatch = new StopWatch();
-		System.out.println("STARTING STOPWATCH");
+		logger.debug("STARTING STOPWATCH "+ stopWatch);
 		stopWatch.start();
 		ApplicationContext ctx= SpringApplication.run(Application.class, args);
 		
 		
 		stopWatch.stop();
-		System.out.println("Stopwatch time: " + stopWatch);
+		logger.debug("Stopwatch time: " + stopWatch);		
 	}
 }
