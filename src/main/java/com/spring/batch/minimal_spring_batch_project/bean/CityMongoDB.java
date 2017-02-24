@@ -1,4 +1,4 @@
-package com.spring.batch.minimal_spring_patch_project.bean;
+package com.spring.batch.minimal_spring_batch_project.bean;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;

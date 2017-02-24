@@ -1,4 +1,4 @@
-package com.spring.batch.minimal_spring_patch_project;
+package com.spring.batch.minimal_spring_batch_project;
 
 //import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;
