@@ -39,10 +39,10 @@ import com.spring.patch.minimal_spring_patch_project.processor.CityItemProcessor
 
 @Configuration
 @EnableBatchProcessing
-@EnableAutoConfiguration
+//@EnableAutoConfiguration
 public class BatchConfiguration {
 	private static Logger logger = LoggerFactory.getLogger(BatchConfiguration.class);
-
+	
 	@Autowired
 	private JobBuilderFactory jobBuilderFactory;
 
@@ -53,16 +53,17 @@ public class BatchConfiguration {
 	public ItemReader<CityRow> reader() {
 		logger.debug("public ItemReader<CityRow> reader()");
 		FlatFileItemReader<CityRow> reader = new FlatFileItemReader<CityRow>();
-	    final ClassPathResource resource = new ClassPathResource("allCountriesSample.txt");
-	    if(resource.exists()){
-		    System.out.println("allCountriesSample.txt exist");
-	    }
-	    else{
-		    System.out.println("allCountriesSample.txt NOTFOUND");
-	    }
-	    
-	    reader.setResource(resource);    
-	    reader.setLineMapper(new DefaultLineMapper<CityRow>() {{
+//	    final ClassPathResource resource = new ClassPathResource("allCountriesSample.txt");
+//	    if(resource.exists()){
+//		    System.out.println("allCountriesSample.txt exist");
+//	    }
+//	    else{
+//		    System.out.println("allCountriesSample.txt NOTFOUND");
+//	    }
+//	    
+//	    reader.setResource(resource);    
+		reader.setResource( new ClassPathResource("allCountriesSample.txt"));
+		reader.setLineMapper(new DefaultLineMapper<CityRow>() {{
 	      setLineTokenizer(new DelimitedLineTokenizer() {{
 	         setNames(new String[] { "id","name","asciiname","alternatenames","latitude","longitude","featureClass","featureCode","countryCode","cc2","admin1Code",
 	                 "admin2Code","admin3Code","admin4Code","population","elevation","dem","timezone","modificationDate"});
@@ -99,6 +100,7 @@ public class BatchConfiguration {
         .incrementer(new RunIdIncrementer())
         .start(step1)
         .build();
+
   }
   
   
