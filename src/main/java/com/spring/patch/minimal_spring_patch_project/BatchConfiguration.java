@@ -41,8 +41,6 @@ import com.spring.patch.minimal_spring_patch_project.processor.CityItemProcessor
 @EnableBatchProcessing
 @EnableAutoConfiguration
 public class BatchConfiguration {
-	
-
 	private static Logger logger = LoggerFactory.getLogger(BatchConfiguration.class);
 
 	@Autowired
@@ -53,8 +51,16 @@ public class BatchConfiguration {
 
 	@Bean
 	public ItemReader<CityRow> reader() {
-	    FlatFileItemReader<CityRow> reader = new FlatFileItemReader<CityRow>();
+		logger.debug("public ItemReader<CityRow> reader()");
+		FlatFileItemReader<CityRow> reader = new FlatFileItemReader<CityRow>();
 	    final ClassPathResource resource = new ClassPathResource("allCountriesSample.txt");
+	    if(resource.exists()){
+		    System.out.println("allCountriesSample.txt exist");
+	    }
+	    else{
+		    System.out.println("allCountriesSample.txt NOTFOUND");
+	    }
+	    
 	    reader.setResource(resource);    
 	    reader.setLineMapper(new DefaultLineMapper<CityRow>() {{
 	      setLineTokenizer(new DelimitedLineTokenizer() {{
@@ -70,11 +76,13 @@ public class BatchConfiguration {
 	
 	@Bean 
 	public ItemProcessor<CityRow, CityMongoDB> processor() {
+		logger.debug("	public ItemProcessor<CityRow, CityMongoDB> processor() {");
 	    return new CityItemProcessor(); 
 	}
 	
   @Bean
   public Step step1() {
+	  logger.debug("bean step1 construct");
     return stepBuilderFactory.get("step1")
         .tasklet(new Tasklet() {
           public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) {
@@ -86,6 +94,7 @@ public class BatchConfiguration {
 
   @Bean
   public Job job(Step step1) throws Exception {
+	  logger.debug("bean job(Step step1) construct");
     return jobBuilderFactory.get("job1")
         .incrementer(new RunIdIncrementer())
         .start(step1)
@@ -161,7 +170,8 @@ public class BatchConfiguration {
 
           @Override
           public void onReadError(Exception e) {
-              logger.warn("Error reading line : {}", e.getMessage());
+//              logger.warn("ysoutError reading line : {}", e.getMessage());
+        	  System.out.println("ERROR123");
           }
       };
 
