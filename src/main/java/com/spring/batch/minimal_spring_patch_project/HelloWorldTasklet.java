@@ -1,4 +1,4 @@
-package com.spring.patch.minimal_spring_patch_project;
+package com.spring.batch.minimal_spring_patch_project;
 
 import org.springframework.batch.core.StepContribution;
 import org.springframework.batch.core.scope.context.ChunkContext;
