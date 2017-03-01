@@ -8,6 +8,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.core.env.Environment;
 import org.apache.commons.lang3.time.StopWatch;
 
+import com.spring.batch.minimal_spring_batch_project.service.SameService;
+
 @SpringBootApplication
 public class Application {
 //	private static Logger logger = LoggerFactory.getLogger(Application.class);
@@ -15,8 +17,10 @@ public class Application {
 	public static void main(String[] args) {
 		
 		StopWatch stopWatch = new StopWatch();
+		SameService.doNothing("none");
 //		logger.debug("STARTING STOPWATCH "+ stopWatch);
 		stopWatch.start();
+		SameService.doNothing("none");
 		ApplicationContext ctx=SpringApplication.run(Application.class, args);
 		
 		Environment envApp =ctx.getEnvironment();
